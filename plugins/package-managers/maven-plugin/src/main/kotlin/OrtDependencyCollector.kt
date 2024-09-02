@@ -21,15 +21,22 @@ package org.ossreviewtoolkit.plugins.packagemanagers.gradleplugin
 
 import java.io.File
 
+import org.apache.maven.plugin.AbstractMojo
+import org.apache.maven.plugins.annotations.LifecyclePhase
+import org.apache.maven.plugins.annotations.Mojo
+import org.apache.maven.plugins.annotations.Parameter
 
 @Mojo(
     name = "collectDependencies",
     defaultPhase = LifecyclePhase.PACKAGE,
     threadSafe = true,
-    requiresOnline = true,
-    configurator = "cyclonedx-mojo-component-configurator"
+    requiresOnline = true
 )
-class OrtDependencyCollectorMojo : AbstractMojo {
-    @Parameter(property = "outputDirectory", defaultValue = "\${project.build.directory}", required = false)
-    private val outputDirectory: java.io.File? = null
+class OrtDependencyCollectorMojo : AbstractMojo() {
+    @Parameter(property = "outputFile", defaultValue = "\${project.build.directory}/ort-collected-dependencies.json", required = false)
+    private val outputFile: File? = null
+
+    override fun execute() {
+        TODO("Not yet implemented")
+    }
 }
